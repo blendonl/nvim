@@ -11,6 +11,19 @@ return {
 			-- 		require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 			-- 	end,
 			-- })
+			--
+			--
+			require("lspconfig").vtsls.setup({
+				settings = {
+					typescript = {
+						inlayHints = {
+							parameterTypes = {
+								enabled = true,
+							},
+						},
+					},
+				},
+			})
 
 			require("lspconfig").lua_ls.setup({
 				settings = {

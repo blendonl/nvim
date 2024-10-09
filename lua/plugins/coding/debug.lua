@@ -49,6 +49,10 @@ return {
 						-- log_console_level = vim.log.levels.ERROR,
 					})
 
+					local sourcMaps = {}
+
+					sourcMaps["*"] = "${workspaceFolder}/src/*"
+
 					local dap = require("dap")
 
 					vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
@@ -72,6 +76,11 @@ return {
 								processId = require("dap.utils").pick_process,
 								cwd = vim.fn.getcwd(),
 								sourceMaps = true,
+								restart = true,
+								port = 9229,
+								skipFiles = { "<node_internals>/**" },
+								sourceMapPathOverrides = sourcMaps,
+								resolveSourceMapLocations = { "${workspaceFolder}/**", "!**/node_modules/**" },
 							},
 							-- Debug web applications (client side)
 							{

@@ -12,10 +12,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, desc = "go to declaration" })
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "go to definition" })
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = ev.bu, desc = "go to refrence" })
-		vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
+		vim.keymap.set("n", "gt", function()
+			require("trouble").toggle("lsp_references")
+		end, { buffer = ev.buf, desc = "go to trouble" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "go to implementation" })
-		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "signature help" })
-		vim.keymap.set("n", "gl", vim.diagnostic.open_float, { buffer = ev.buf, desc = "list diagnostics float" })
+		vim.keymap.set("n", "gS", vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "signature help" })
+		vim.keymap.set("n", "g[", vim.diagnostic.open_float, { buffer = ev.buf, desc = "list diagnostics float" })
 
 		vim.keymap.set(
 			"n",

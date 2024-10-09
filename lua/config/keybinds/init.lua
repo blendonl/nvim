@@ -1,8 +1,6 @@
 require("config.keybinds.editor")
 require("config.keybinds.coding")
 -- require("config.keybinds.tree-sitter")
-require("config.keybinds.which-key")
-require("config.keybinds.window")
 require("config.keybinds.util")
 require("config.keybinds.lsp")
 

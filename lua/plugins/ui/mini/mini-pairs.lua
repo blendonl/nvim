@@ -1,7 +1,7 @@
 return {
-	"echasnovski/mini.pairs",
-	event = "VeryLazy",
-	opts = {},
+	-- "echasnovski/mini.pairs",
+	-- event = "VeryLazy",
+	-- opts = {},
 	-- keys = {
 	-- 	{
 	-- 		"<leader>up",
