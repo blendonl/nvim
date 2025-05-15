@@ -20,6 +20,5 @@ return {
 			},
 		}
 	end,
-	config = function(_, opts)
-	end,
+	config = function(_, opts) end,
 }

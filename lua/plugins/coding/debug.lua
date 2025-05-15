@@ -12,8 +12,8 @@ return {
 			{
 				"microsoft/vscode-js-debug",
 				-- After install, build it and rename the dist directory to out
-				build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
-				version = "1.*",
+				build = "npm install --legacy-peer-deps  && npx gulp vsDebugServerBundle && mv dist out",
+				version = "v1.74.1",
 			},
 			{
 				"mxsdev/nvim-dap-vscode-js",
@@ -57,6 +57,16 @@ return {
 
 					vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
+					-- dap.adapters["pwa-node"] = {
+					-- 	type = "server",
+					-- 	host = "localhost",
+					-- 	port = "${port}",
+					-- 	executable = {
+					-- 		command = "js-debug-adapter",
+					-- 		args = { "${port}" },
+					-- 	},
+					-- }
+
 					for _, language in ipairs(js_based_languages) do
 						dap.configurations[language] = {
 							-- Debug single nodejs files
@@ -77,10 +87,14 @@ return {
 								cwd = vim.fn.getcwd(),
 								sourceMaps = true,
 								restart = true,
-								port = 9229,
+								port = 8123,
 								skipFiles = { "<node_internals>/**" },
 								sourceMapPathOverrides = sourcMaps,
 								resolveSourceMapLocations = { "${workspaceFolder}/**", "!**/node_modules/**" },
+								executable = {
+									command = "js-debug-adapter",
+									args = { "${port}" },
+								},
 							},
 							-- Debug web applications (client side)
 							{
@@ -124,6 +138,7 @@ return {
 			-- fancy UI for the debugger
 			{
 				"rcarriga/nvim-dap-ui",
+				tag = "v1.1.0",
 				dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 				-- stylua: ignore
 				keys = {

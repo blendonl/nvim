@@ -4,14 +4,10 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				cond = function()
-					return vim.fn.executable("make") == 1
-				end,
+				"natecraddock/telescope-zf-native.nvim",
+				config = function() end,
 			},
 		},
-		branch = "0.1.x",
 		cmd = "Telescope",
 		opts = function()
 			local telescope = require("telescope")
@@ -33,7 +29,7 @@ return {
 			})
 
 			telescope.load_extension("harpoon")
-			telescope.load_extension("fzf")
+			telescope.load_extension("zf-native")
 			return telescope
 		end,
 	},

@@ -13,7 +13,7 @@ opt.breakindent = true
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.conceallevel = 2 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
@@ -96,3 +96,20 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.o.laststatus = 0
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "graphql",
+-- 	callback = function(ev)
+-- 		vim.lsp.start({
+-- 			name = "apollo-language-server",
+--
+-- 			-- If you're using a profile, you can append `'--profile', 'default'`
+-- 			-- to this list (substitute `default` for your profile name)
+-- 			cmd = { "rover", "lsp", "--supergraph-config", "supergraph.yaml" },
+--
+-- 			-- Set the "root directory" to the parent directory of the file in the
+-- 			-- current buffer (`ev.buf`) that contains a `supergraph.yaml` file.
+-- 			root_dir = vim.fs.root(ev.buf, { "supergraph.yaml" }),
+-- 		})
+-- 	end,
+-- })

@@ -9,6 +9,7 @@ local map = vim.keymap.set
 -- Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "<leader>mf", "<cmd>ObsidianFollowLink<cr>", { expr = true, silent = true })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
@@ -81,3 +82,6 @@ map("n", "G", "Gzz")
 map("n", "<leader>mh", function()
 	require("memento").toggle()
 end, { desc = "Momento toggle" })
+
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+map("n", "<leader>p", '"0p', { desc = "Paste from 0 register" })
