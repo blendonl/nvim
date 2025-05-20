@@ -20,10 +20,19 @@ vim.keymap.set("n", "<leader>sf", function()
 		no_ignore_parent = true,
 	})
 end, { desc = "[S]earch [F]iles" })
+
+vim.keymap.set("n", "<leader>ss", function()
+	telescope.find_files({
+		cwd = "./src",
+		hidden = true,
+		no_ignore = true,
+		no_ignore_parent = true,
+	})
+end, { desc = "[S]earch Files [S]rc" })
 vim.keymap.set("n", "<leader>sh", telescope.help_tags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sw", telescope.grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sgg", telescope.live_grep, { desc = "[S]earch by [G]rep" })
-vim.keymap.set("n", "<leader>sG", ":LiveGrepGitRoot<cr>", { desc = "[S]earch by [G]rep on Git Root" })
+-- vim.keymap.set("n", "<leader>sG", ":LiveGrepGitRoot<cr>", { desc = "[S]earch by [G]rep on Git Root" })
 vim.keymap.set("n", "<leader>sd", telescope.diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sr", telescope.resume, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>sk", telescope.keymaps, { desc = "[S]earch [K]eymaps" })

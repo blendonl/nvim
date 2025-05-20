@@ -4,8 +4,8 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{
-				"natecraddock/telescope-zf-native.nvim",
-				config = function() end,
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
 			},
 		},
 		cmd = "Telescope",
@@ -20,6 +20,9 @@ return {
 						"yarn.lock",
 						"vendors/prisma",
 					},
+					extensions = {
+						fzf = {},
+					},
 
 					-- layout_config = {
 					-- 	width = 0.6,
@@ -29,7 +32,9 @@ return {
 			})
 
 			telescope.load_extension("harpoon")
-			telescope.load_extension("zf-native")
+			telescope.load_extension("fzf")
+
+			require("config.telescope-multi-grep").setup()
 			return telescope
 		end,
 	},

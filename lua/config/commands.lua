@@ -44,5 +44,3 @@ local function live_grep_git_root()
 end
 
 vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
-
--- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)

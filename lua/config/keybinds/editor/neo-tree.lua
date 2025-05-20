@@ -21,11 +21,8 @@ local function find_git_root() -- Use the current buffer's path as the starting 
 end
 
 map("n", "<leader>fE", function()
-	require("nvim-tree.commands").execute({ toggle = true, dir = find_git_root() })
+	require("nvim-tree.commands").execute({ current_window = true, dir = find_git_root() })
 end, { desc = "Explorer NeoTree (root dir)" })
--- map("n", "<leader>fe", function()
--- 	require("nvim-tree.commands").execute({ toggle = true, dir = vim.loop.cwd() })
--- end, { desc = "Explorer NeoTree (cwd)" })
 
 map("n", "<leader>fe", function()
 	require("nvim-tree.api").tree.toggle({ current_window = true })
@@ -33,6 +30,3 @@ end, { desc = "Explorer NeoTree (cwd)" })
 map("n", "<leader>fE", "<cmd> NvimTreeOpen " .. find_git_root() .. " <CR>", { desc = "Explorer NeoTree (cwd)" })
 map("n", "<leader>e", "<leader>fe", { desc = "Explorer NeoTree (root dir)", remap = true })
 map("n", "<leader>E", "<leader>fE", { desc = "Explorer NeoTree (cwd)", remap = true })
-map("n", "<leader>fb", function()
-	require("nvim-tree.commands").execute({ source = "buffers", toggle = true })
-end, { desc = "Buffer explorer" })
