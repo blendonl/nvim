@@ -112,8 +112,8 @@ local function listenForChanges(buf, lines, tasks_path)
 			for i = 1, #modified_lines do
 				for j = 1, #tasks.ts.tasksWithKeys do
 					if
-						string.gsub(tasks.ts.tasksWithKeys[j].value, "- %[[ x]%]", "")
-						== string.gsub(modified_lines[i], "- %[[ x]%]", "")
+							string.gsub(tasks.ts.tasksWithKeys[j].value, "- %[[ x]%]", "")
+							== string.gsub(modified_lines[i], "- %[[ x]%]", "")
 					then
 						lines[tasks.ts.tasksWithKeys[j].key] = modified_lines[i]
 					end
@@ -134,16 +134,31 @@ local function listenForChanges(buf, lines, tasks_path)
 	})
 end
 
-local path = vim.fn.system("tmux display-message -p '#S' ", {})
-local tasks_path = "/home/notpc/notes/work/" .. string.gsub(path, "\n", "") .. "/index.md"
+local name = vim.fn.system("tmux display-message -p '#S' ", {})
+local path = vim.fn.system("selected_path=$(tmux display-message -p '#{pane_current_path}", {})
 
--- tests the functions above
-local lines = lines_from(tasks_path)
 
-map("n", "<leader>tx", function()
-	local buf = open_buffer()
-	local tasks = getTasks(lines)
-	vim.api.nvim_buf_set_lines(buf, 0, -1, false, tasks.tasks)
+local kanban_path = "/home/notpc/notes/work/" .. string.gsub(name, "\n", "") .. "/kanban.md"
 
-	listenForChanges(buf, lines, tasks_path)
+
+
+
+map("n", "<leader>kk", function()
+	kanban_path = ""
+	local base_path = "/mnt/data/notes/"
+	if string.find(path, "work") then
+		kanban_path = "work/"
+	elseif string.find(path, "personal") then
+		kanban_path = "personal/"
+	else
+		kanban_path = "general/"
+	end
+
+	local full_path = base_path .. kanban_path .. string.gsub(name, "\n", "") .. "/kanban.md"
+
+
+	if not file_exists(full_path) then
+		vim.cmd("SuperKanban create " .. full_path)
+	end
+	vim.cmd("SuperKanban open " .. full_path)
 end, { desc = "Line Diagnostics" })

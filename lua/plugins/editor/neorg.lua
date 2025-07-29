@@ -13,15 +13,19 @@ return {
 		workspaces = {
 			{
 				name = "personal",
-				path = "~/notes/personal",
+				path = "/mnt/data/notes/personal",
 			},
 			{
 				name = "work",
-				path = "~/notes/work",
+				path = "/mnt/data/notes/work",
 			},
 			{
 				name = "general",
-				path = "~/notes/general",
+				path = "/mnt/data/notes/general",
+			},
+			{
+				name = "all",
+				path = "/mnt/data/notes",
 			},
 		}, -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
 		mappings = {
@@ -48,8 +52,12 @@ return {
 				action = "<cmd>ObsidianDailies<cr>",
 				opts = { buffer = true },
 			},
-			["<leader>ot"] = {
+			["<leader>otd"] = {
 				action = "<cmd>ObsidianToday<cr>",
+				opts = { buffer = true },
+			},
+			["<leader>otm"] = {
+				action = "<cmd>ObsidianTomorrow<cr>",
 				opts = { buffer = true },
 			},
 			-- Smart action depending on context, either follow link or toggle checkbox.

@@ -25,6 +25,7 @@ map("n", "<leader>fE", function()
 end, { desc = "Explorer NeoTree (root dir)" })
 
 map("n", "<leader>fe", function()
+	vim.cmd("split")
 	require("nvim-tree.api").tree.toggle({ current_window = true })
 end, { desc = "Explorer NeoTree (cwd)" })
 map("n", "<leader>fE", "<cmd> NvimTreeOpen " .. find_git_root() .. " <CR>", { desc = "Explorer NeoTree (cwd)" })

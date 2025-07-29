@@ -28,6 +28,20 @@ return {
 				},
 			},
 			view = {
+
+				float = {
+
+					enable = false,
+					open_win_config = {
+						relative = "editor",
+						border = "rounded",
+						width = 100,
+						height = 100,
+						row = 20,
+						col = 30,
+					},
+
+				},
 				signcolumn = "yes",
 			},
 

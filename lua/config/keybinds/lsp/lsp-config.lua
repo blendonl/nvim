@@ -41,5 +41,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>cf", function()
 			vim.lsp.buf.format({ async = true })
 		end, { buffer = ev.bu, desc = "format code" })
+
+		vim.api.nvim_set_keymap('n', '<space>xw', '', {
+			noremap = true,
+			callback = function()
+				for _, client in ipairs(vim.lsp.buf_get_clients()) do
+					require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+				end
+			end
+		})
 	end,
 })
