@@ -44,3 +44,25 @@ local function live_grep_git_root()
 end
 
 vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
+
+vim.api.nvim_create_autocmd('TermOpen', {
+	pattern = '*',
+	callback = function()
+		local buffer = vim.api.nvim_get_current_buf()
+		local name = vim.api.nvim_buf_get_name(buffer)
+
+		if name:match('claude') then
+			-- Switch to normal mode when pressing Escape in terminal mode
+			vim.keymap.set("t", '<Esc>', '<C-\\><C-n>', { buffer = buffer })
+
+			-- Send Escape when pressing Ctrl-X in terminal mode
+			vim.keymap.set("t", '<C-x>', '<Esc>', { buffer = buffer })
+
+			-- Map Ctrl+h/j/k/l to navigate between tmux panes
+			vim.keymap.set("t", '<C-h>', '<cmd>lua require("tmux").move_left()<cr>', { buffer = buffer })
+			vim.keymap.set("t", '<C-j>', '<cmd>lua require("tmux").move_bottom()<cr>', { buffer = buffer })
+			vim.keymap.set("t", '<C-k>', '<cmd>lua require("tmux").move_top()<cr>', { buffer = buffer })
+			vim.keymap.set("t", '<C-l>', '<cmd>lua require("tmux").move_right()<cr>', { buffer = buffer })
+		end
+	end
+})
