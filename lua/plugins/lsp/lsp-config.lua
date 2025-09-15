@@ -11,8 +11,6 @@ return {
 			-- 		require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 			-- 	end,
 			-- })
-			--
-			--
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			local lspconfig = require("lspconfig")

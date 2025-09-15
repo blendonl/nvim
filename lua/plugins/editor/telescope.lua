@@ -31,6 +31,8 @@ return {
 				},
 			})
 
+			telescope.load_extension("rest")
+
 			telescope.load_extension("harpoon")
 			telescope.load_extension("fzf")
 

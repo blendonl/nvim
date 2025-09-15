@@ -13,19 +13,19 @@ return {
 		workspaces = {
 			{
 				name = "personal",
-				path = "/mnt/data/notes/personal",
+				path = "/home/notpc/notes/personal",
 			},
 			{
 				name = "work",
-				path = "/mnt/data/notes/work",
+				path = "/home/notpc/notes/work",
 			},
 			{
 				name = "general",
-				path = "/mnt/data/notes/general",
+				path = "/home/notpc/notes/general",
 			},
 			{
 				name = "all",
-				path = "/mnt/data/notes",
+				path = "/home/notpc/notes",
 			},
 		}, -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
 		mappings = {
