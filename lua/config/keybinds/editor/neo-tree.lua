@@ -21,11 +21,9 @@ local function find_git_root() -- Use the current buffer's path as the starting 
 end
 
 map("n", "<leader>fE", function()
-	vim.cmd("split")
-	require("nvim-tree.commands").execute({ current_window = true, dir = find_git_root() })
-end, { desc = "Explorer NeoTree (root dir)" })
+	require("fyler").open({ kind = "split_below_all", dir = find_git_root() })
+end, { desc = "Explorer Fyler (root dir)" })
 
 map("n", "<leader>fe", function()
-	vim.cmd("split")
-	require("nvim-tree.api").tree.toggle({ current_window = true })
-end, { desc = "Explorer NeoTree (cwd)" })
+	require("fyler").open({ kind = "split_below_all" })
+end, { desc = "Explorer Fyler (cwd)" })

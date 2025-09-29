@@ -22,6 +22,9 @@ return {
 					},
 					extensions = {
 						fzf = {},
+						fyler_zoxide = {
+							-- Extension configuration
+						},
 					},
 
 					-- layout_config = {
@@ -32,6 +35,8 @@ return {
 			})
 
 			telescope.load_extension("rest")
+
+			telescope.load_extension("fyler_zoxide")
 
 			telescope.load_extension("harpoon")
 			telescope.load_extension("fzf")

@@ -19,8 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	-- { import = "plugins.ui" },
-	{ import = "plugins" },
-})
+	{ import = "plugins", rocks = { hererocks = true } } })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
