@@ -11,7 +11,7 @@ return {
 			},
 		},
 		opts = {
-			timeout = 3000,
+			timeout = 1500,
 			max_height = function()
 				return math.floor(vim.o.lines * 0.75)
 			end,
@@ -22,7 +22,6 @@ return {
 				vim.api.nvim_win_set_config(win, { zindex = 100 })
 			end,
 		},
-		init = function()
-		end,
+		init = function() end,
 	},
 }
