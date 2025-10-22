@@ -10,6 +10,10 @@ return {
 			actions = {
 				open_file = {
 					quit_on_open = true,
+					resize_window = false, -- don't resize when opening
+					window_picker = {
+						enable = false, -- skip choosing window manually
+					},
 				},
 			},
 			update_focused_file = {
