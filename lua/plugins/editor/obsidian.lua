@@ -6,8 +6,8 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
-		"preservim/vim-markdown",
-		"epwalsh/pomo.nvim",
+		-- "preservim/vim-markdown",
+		-- "epwalsh/pomo.nvim",
 	},
 	opts = {
 		workspaces = {
